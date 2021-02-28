@@ -1,0 +1,255 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+// Set your colors
+$peach: #ff7d4e;
+$peach-lighter: #ffb06f;
+$primary: $peach;
+
+.has-text-peach {
+  color: $peach !important;
+
+  &-lighter {
+    color: $peach-lighter !important;
+  }
+}
+
+body,
+div,
+article,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+strong {
+  color: unset;
+}
+
+a {
+  color: $peach;
+
+  svg {
+    width: 36px;
+    height: 24px;
+
+    path {
+      fill: $peach;
+    }
+  }
+
+  &:hover {
+    color: $peach-lighter;
+
+    svg path {
+      fill: $peach-lighter;
+    }
+  }
+}
+
+// text
+.has-text-weight-heavy {
+  font-weight: 900 !important;
+}
+
+.title,
+.subtitle {
+  font-family: 'Lato', BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: inherit;
+}
+
+.subtitle {
+  line-height: 1.5;
+}
+
+// markdown
+.nuxt-content {
+  body,
+  div,
+  article,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  strong {
+    color: $white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-top: 2em;
+
+    & a {
+      .icon.icon-link {
+        background: url('~/assets/svg/icon-hashtag.svg') center bottom;
+        margin-right: 10px;
+        margin-left: -35px;
+        margin-top: 7px;
+      }
+    }
+  }
+
+  p {
+    margin-bottom: 1em;
+  }
+
+  .nuxt-content-highlight {
+    position: relative;
+
+    & > .filename {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: #f7fafc;
+      z-index: 10;
+      font-family: "Fira Code", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      letter-spacing: -0.025em;
+      margin-right: 1rem;
+      margin-top: 0.75rem;
+    }
+  }
+}
+
+pre[class*="language-"] {
+  padding: 1.25em 1em;
+  overflow: auto;
+  border-radius: 0.7em;
+
+  .tag:not(body) {
+    align-items: unset;
+    background-color: unset;
+    border-radius: unset;
+    color: inherit;
+    font-size: inherit;
+    height: inherit;
+    line-height: 1.6;
+    padding-left: unset;
+    padding-right: unset;
+    white-space: inherit;
+    display: unset;
+  }
+
+  .number {
+    -webkit-box-align: unset;
+    -ms-flex-align: unset;
+    align-items: unset;
+    background-color: unset;
+    border-radius: unset;
+    display: unset;
+    font-size: inherit;
+    height: inherit;
+    -webkit-box-pack: unset;
+    -ms-flex-pack: unset;
+    justify-content: unset;
+    margin-right: unset;
+    min-width: unset;
+    padding: unset;
+    text-align: inherit;
+    vertical-align: inherit;
+  }
+}
+
+.bio {
+  transition: padding-top 0.2s ease-out;
+
+  .bio__inner {
+    overflow: clip;
+    background-color: transparent;
+    border-radius: 0;
+    margin: 0;
+    transition:
+      background-color 0.3s cubic-bezier(0, 0, 0, 1),
+      border-radius 0.3s cubic-bezier(0, 0, 0, 1),
+      margin 0.2s ease-in-out;
+
+    & svg {
+      transform: rotate3d(1, 0, 0, 0deg);
+      transition: transform 0.2s ease-out;
+
+      @media (min-width: $tablet) {
+        margin-right: 0.75rem;
+      }
+
+      & path {
+        fill: $primary;
+
+        @media (min-width: $tablet) {
+          fill: #fff3;
+        }
+      }
+    }
+
+    .bio__image {
+      border-radius: 50%;
+      max-width: 3.5rem;
+      padding-bottom: 100%;
+      margin-top: 0;
+      transition:
+        max-width 0.2s ease-out,
+        margin-top 0.2s ease-out;
+    }
+
+    .bio__inner__sneaky {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      padding-bottom: 1.5rem;
+      transition:
+        max-height 0.2s ease-in-out,
+        opacity 0.3s ease-out;
+    }
+  }
+
+  &.bioActive {
+    padding-top: 1.5rem;
+
+    .bio__inner {
+      overflow: visible;
+      background-color: #393d48;
+      border-radius: 8px;
+      margin: 0 0 3em;
+      transition:
+        background-color 0.1s ease-in-out,
+        margin 0.3s ease-in-out;
+
+      @media (max-width: $desktop) {
+        & svg {
+          transform: rotate3d(1, 0, 0, 180deg);
+        }
+      }
+
+      @media (min-width: $desktop) {
+        .bio__image {
+          border-radius: 50%;
+          max-width: 9rem;
+          margin-top: -3.5rem;
+        }
+      }
+
+      .bio__inner__sneaky {
+        max-height: 600px;
+        opacity: 1;
+        transition:
+          max-height 0.3s cubic-bezier(0, 0, 0, 1),
+          opacity 0.3s ease-in;
+      }
+    }
+  }
+}
